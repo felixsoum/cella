@@ -8,7 +8,7 @@ public class EnemySimpleCellAI : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {		
-		Invoke ("TimedShoot", 1);
+		TimedShoot ();
 		var TP = transform.position;
 		pos = Random.Range (0.0f, 8.0f); 
 		TP.x = pos - 4.0f;
@@ -21,11 +21,12 @@ public class EnemySimpleCellAI : MonoBehaviour {
 		TP.x -= 0.03f;
 		transform.position = TP;
 	}
+
 	void TimedShoot() {
-		Rigidbody2D p = Instantiate (projectile, transform.position, Quaternion.identity) as Rigidbody2D;
-		p.AddForce (Vector2.right * 200);
-		Debug.Log ("TEST");
+		Rigidbody2D p = Instantiate (projectile, this.transform.position, Quaternion.identity) as Rigidbody2D;
+		Invoke ("TimedShoot", 1);
 	}
+
 	public Rigidbody2D projectile;
 	protected float pos; 
 }
