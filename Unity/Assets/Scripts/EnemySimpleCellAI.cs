@@ -21,7 +21,10 @@ public class EnemySimpleCellAI : MonoBehaviour {
 		TP.x -= 0.03f;
 		transform.position = TP;
 
-		if (Common.isOutOfScreen (transform.position))
+		if (!Common.isOutOfScreen (transform.position))
+			visibleOnce = true;
+
+		if (Common.isOutOfScreen (transform.position) && visibleOnce)
 			Destroy (this.gameObject);
 	}
 
@@ -32,4 +35,5 @@ public class EnemySimpleCellAI : MonoBehaviour {
 
 	public Rigidbody2D projectile;
 	protected float pos; 
+	protected bool visibleOnce = false;
 }
