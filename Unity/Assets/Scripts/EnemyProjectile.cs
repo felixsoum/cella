@@ -45,7 +45,7 @@ public class EnemyProjectile : MonoBehaviour
 				var transfered = CellComposition.Transfer( fromComposition, toComposition );
 
 				// Reset some attributes
-				transfered.transform.localRotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+				transfered.transform.localRotation = transfered.transform.localRotation * Quaternion.Euler(0.0f, 180.0f, 0.0f);
 				var projComp = transfered.GetComponent<ProjectileFiring>();
 				var ownerProj = Owner.GetComponent<ProjectileFiring>();
 				if( projComp && ownerProj)
