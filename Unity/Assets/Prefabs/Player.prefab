@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 100002, guid: ed457f354dde86f46befbb39d4688e65, type: 2}
   projectileTargetTag: Enemy
-  velocity: {x: 80, y: 0, z: 0}
+  velocity: {x: 160, y: 0, z: 0}
   delay: .5
 --- !u!114 &11400002
 MonoBehaviour:

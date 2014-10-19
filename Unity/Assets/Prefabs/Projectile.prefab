@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e7069f26098d1243997a7a84ae0555f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathEffectPrefab: {fileID: 100000, guid: 507f39a2f3c22d84891bcf9ed50927b1, type: 2}
   targetTag: Player
   direction: {x: -1, y: 0, z: 0}
   speed: 80
