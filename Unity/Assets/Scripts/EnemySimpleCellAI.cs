@@ -30,12 +30,6 @@ public class EnemySimpleCellAI : MonoBehaviour {
 		Invoke ("TimedShoot", 1);
 	}
 
-	#region On
-	void OnBecameInvisible() {
-		Destroy (this.gameObject);
-	}
-	#endregion
-
 	public Rigidbody2D projectile;
 	protected float pos; 
 }

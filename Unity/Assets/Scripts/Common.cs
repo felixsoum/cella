@@ -15,6 +15,7 @@ public class Common
 			|| screenPosition.x > Screen.width 
 			|| screenPosition.x < 0;
 	}
+
 }
 
 
