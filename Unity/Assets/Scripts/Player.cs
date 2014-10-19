@@ -17,4 +17,10 @@ public class Player : MonoBehaviour
 		rigidbody2D.velocity = axisInput * moveSpeed * Time.deltaTime;
 		animator.SetBool("IsFiring", Input.GetButton("Fire1"));
 	}
+
+	private void ApplyDamage(float receive) {
+		// TODO
+	}
+
+
 }
