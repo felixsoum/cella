@@ -22,7 +22,10 @@ public class EnemySimpleCellAI : MonoBehaviour {
 		transform.position = TP;
 	}
 	void TimedShoot() {
-
+		Rigidbody2D p = Instantiate (projectile, transform.position, Quaternion.identity) as Rigidbody2D;
+		p.AddForce (Vector2.right * 200);
+		Debug.Log ("TEST");
 	}
+	public Rigidbody2D projectile;
 	protected float pos; 
 }

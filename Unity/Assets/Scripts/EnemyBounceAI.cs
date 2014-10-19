@@ -4,6 +4,7 @@ using System.Collections;
 
 public class EnemyBounceAI : EnemySimpleCellAI
 {
+	
 	public EnemyBounceAI ()
 	{
 	}
