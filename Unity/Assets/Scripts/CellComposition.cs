@@ -21,19 +21,6 @@ public class CellComposition : MonoBehaviour
 		}
 	}
 
-	void Update()
-	{
-		//TEMPORARY FOR TESTING ONLY; REMOVE AFTER
-		if( Input.GetMouseButtonDown(0) || Input.GetAxis("Mouse ScrollWheel") < 0.0f )
-		{
-			Add();
-		}
-		if( Input.GetMouseButtonDown(1) || Input.GetAxis("Mouse ScrollWheel") > 0.0f ) 
-		{
-			Remove();
-		}
-	}
-
 	// Add a cell to the composition using the default prefab.
 	public void Add()
 	{
