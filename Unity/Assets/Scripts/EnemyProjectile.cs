@@ -7,7 +7,12 @@ public class EnemyProjectile : MonoBehaviour {
 	public float speed = 160.0f;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
+		if( direction.x < 0.0f )
+		{
+			this.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
+		}
 	}
 	
 	// Update is called once per frame

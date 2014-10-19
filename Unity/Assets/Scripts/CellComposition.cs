@@ -31,6 +31,7 @@ public class CellComposition : MonoBehaviour
 	public void Add( GameObject cell )
 	{
 		var cellClone = Instantiate( cell ) as GameObject;
+		cellClone.transform.position = Vector3.zero;
 		cellClone.transform.parent = this.transform;
 
 		cells.Add( cellClone );
@@ -68,10 +69,11 @@ public class CellComposition : MonoBehaviour
 	{
 		if( cellIndex < cells.Count )
 		{
+			var origin = this.transform.position;
 			if( cellIndex == 0 )
 			{
 				// First cell on origin
-				cells[cellIndex].transform.position = Vector3.zero;
+				cells[cellIndex].transform.position = origin;
 			}
 			else
 			{
@@ -99,9 +101,9 @@ public class CellComposition : MonoBehaviour
 				
 				Vector2 gridPosition = GetGridPosition( gridLevel, indexOnLevel, gridFillOrder );
 				
-				Vector3 position = Vector3.zero;
-				position.x = cellSize.x * gridPosition.x;
-				position.y = cellSize.y * gridPosition.y;
+				Vector3 position = origin;
+				position.x += cellSize.x * gridPosition.x;
+				position.y += cellSize.y * gridPosition.y;
 				cells[cellIndex].transform.position = position;
 			}
 		}
