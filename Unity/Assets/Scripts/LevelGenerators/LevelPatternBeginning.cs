@@ -16,18 +16,41 @@ public class LevelPatternBeginning : MonoBehaviour
 	/* Enemies in first wave will first have a */
 	public void run() {
 		int seconds = 0;
-		enemyWave ();
+		Invoke ("EnemyWave", 1);
+		Invoke ("EnemyWaveHarder", 10);
 	}
 
 
-	private void enemyWave() {
+	private void EnemyWave() {
 		var xpos = 4;
 		var ypos = -1.0f; 
 		var loopCount = 5f; 
 
 		for (float z = 0f; z < loopCount; z += 1f) {
-			var clone = Instantiate(bloodCell, new Vector2(xpos, ypos + ((z / loopCount) * 2.0f)), Quaternion.identity);
+			var clone = Instantiate(
+				bloodCell, 
+				new Vector2(xpos, ypos + ((z / loopCount) * 2.0f)), 
+				Quaternion.identity);
+		}
+	}
 
+	private void EnemyWaveHarder() {
+		var xpos = 4;
+		var ypos = -1.0f; 
+		var loopCount = 10f; 
+		
+		for (float z = 0f; z < loopCount; z += 1f) {
+			var clone = Instantiate(
+				bloodCell, 
+				new Vector2(xpos, ypos + ((z / loopCount) * 2.0f)), 
+				Quaternion.identity);
+
+			/* zig zag */
+			z += 1f;
+			var clone2 = Instantiate(
+				bloodCell, 
+				new Vector2(xpos - 1, ypos + ((z / loopCount) * 2.0f)), 
+				Quaternion.identity);
 		}
 	}
 }
