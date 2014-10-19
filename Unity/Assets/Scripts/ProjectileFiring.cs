@@ -52,5 +52,6 @@ public class ProjectileFiring : MonoBehaviour
 		destination.velocity = this.velocity;
 		destination.delay = this.delay;
 		destination.projectileTargetTag = this.projectileTargetTag;
+		destination.projectilePrefab = this.projectilePrefab;
 	}
 }
