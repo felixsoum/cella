@@ -7,7 +7,7 @@ public class LevelPatternBeginning : MonoBehaviour
 {
 	/* First basic enemy */
 	public Rigidbody2D bloodCell; 
-	public Rigidbody2D EColi;
+	public Rigidbody2D eColi;
 
 	void Start() {
 		run ();
@@ -20,7 +20,7 @@ public class LevelPatternBeginning : MonoBehaviour
 		Invoke ("EnemyWaveHarder", seconds += 10);
 		Invoke ("EnemyWave", seconds += 10);
 		Invoke ("EnemyWave", seconds += 10);
-		Invoke ("EnemyWaveHarder", seconds += 10);
+		Invoke ("EnemyWaveMixed", seconds += 10);
 		Invoke ("EnemyWave", seconds += 10);
 	}
 
@@ -53,6 +53,26 @@ public class LevelPatternBeginning : MonoBehaviour
 			z += 1f;
 			var clone2 = Instantiate(
 				bloodCell, 
+				new Vector2(xpos - 1, ypos + ((z / loopCount) * 2.0f)), 
+				Quaternion.identity);
+		}
+	}
+
+	private void EnemyWaveMixed() {
+		var xpos = 4;
+		var ypos = -1.0f; 
+		var loopCount = 10f; 
+		
+		for (float z = 0f; z < loopCount; z += 1f) {
+			var clone = Instantiate(
+				bloodCell, 
+				new Vector2(xpos, ypos + ((z / loopCount) * 2.0f)), 
+				Quaternion.identity);
+			
+			/* zig zag */
+			z += 1f;
+			var clone2 = Instantiate(
+				eColi, 
 				new Vector2(xpos - 1, ypos + ((z / loopCount) * 2.0f)), 
 				Quaternion.identity);
 		}
