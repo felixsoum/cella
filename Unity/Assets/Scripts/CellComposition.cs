@@ -24,11 +24,11 @@ public class CellComposition : MonoBehaviour
 	void Update()
 	{
 		//TEMPORARY FOR TESTING ONLY; REMOVE AFTER
-		if( Input.GetMouseButtonDown(0) )
+		if( Input.GetMouseButtonDown(0) || Input.GetAxis("Mouse ScrollWheel") < 0.0f )
 		{
 			Add();
 		}
-		if( Input.GetMouseButtonDown(1) ) 
+		if( Input.GetMouseButtonDown(1) || Input.GetAxis("Mouse ScrollWheel") > 0.0f ) 
 		{
 			Remove();
 		}
@@ -47,7 +47,7 @@ public class CellComposition : MonoBehaviour
 		cellClone.transform.parent = this.transform;
 
 		cells.Add( cellClone );
-		RepositionStructure();
+		RepositionCell( cells.Count - 1 );
 	}
 
 	// Removes and destroys a cell from the composition; returns the destroyed cell game object, null if composition was empty.
@@ -72,41 +72,79 @@ public class CellComposition : MonoBehaviour
 
 	private void RepositionStructure()
 	{
-		if( cells.Count > 0 )
+		for( int i = 0; i < cells.Count; ++i )
 		{
-			// First cell on origin
-			cells.First().transform.position = Vector3.zero;
-
-			// Find out the cell sizes for positioning later based on size
-			// Assume they are same size for now.
-			Vector2 cellSize = GetSize( cells.First() );
-
-			// Do a grid like structure; define the ordering here
-			Vector2[] gridFillOrder = 
+			RepositionCell( i );
+		}
+	}
+	private void RepositionCell( int cellIndex )
+	{
+		if( cellIndex < cells.Count )
+		{
+			if( cellIndex == 0 )
 			{
-				new Vector2(0, 1),	// Top
-				new Vector2(0, -1),	// Bot
-				new Vector2(-1, 0),	// Left
-				new Vector2(1, 0),	// Right
-				new Vector2(-1, 1),	// Top Left
-				new Vector2(1, 1),	// Top Right
-				new Vector2(-1, -1),// Bot Left
-				new Vector2(1, -1),	// Bot Right
-			};
-
-			// Loop and position all cells after the first
-			for( int i = 1; i < cells.Count; ++i )
+				// First cell on origin
+				cells[cellIndex].transform.position = Vector3.zero;
+			}
+			else
 			{
-				// 8 cells per grid level
-				int gridLevel = (i-1) / 8 + 1;
-				int indexOnLevel = (i-1) % 8;
+				// Find out the cell sizes for positioning later based on size
+				// Assume they are same size for now.
+				Vector2 cellSize = GetSize( cells.First() );
 
+				// Do a grid like structure; define the ordering here
+				Vector2[] gridFillOrder = 
+				{
+					new Vector2(0, 1),	// Top
+					new Vector2(0, -1),	// Bot
+					new Vector2(-1, 0),	// Left
+					new Vector2(1, 0),	// Right
+					new Vector2(-1, 1),	// Top Left
+					new Vector2(1, 1),	// Top Right
+					new Vector2(-1, -1),// Bot Left
+					new Vector2(1, -1),	// Bot Right
+				};
+				
+				// Derive number of cells on a square grid level.
+				int gridLevel = Mathf.CeilToInt((Mathf.Sqrt(cellIndex+1) + 1.0f) / 2.0f) - 1;
+				int totalPrevious = (int)Mathf.Pow(2 * gridLevel - 1, 2);
+				int indexOnLevel = cellIndex - totalPrevious;
+				
+				Vector2 gridPosition = GetGridPosition( gridLevel, indexOnLevel, gridFillOrder );
+				
 				Vector3 position = Vector3.zero;
-				position.x = cellSize.x * gridFillOrder[indexOnLevel].x * gridLevel;
-				position.y = cellSize.y * gridFillOrder[indexOnLevel].y * gridLevel;
-				cells[i].transform.position = position;
+				position.x = cellSize.x * gridPosition.x;
+				position.y = cellSize.y * gridPosition.y;
+				cells[cellIndex].transform.position = position;
 			}
 		}
+	}
+	private Vector2 GetGridPosition( int gridLevel, int indexOnLevel, Vector2[] priorityOrder )
+	{
+		Vector2 gridPosition = Vector2.zero;
+		if( indexOnLevel < priorityOrder.Count() )
+		{
+			gridPosition = priorityOrder[indexOnLevel] * gridLevel;
+		}
+		else
+		{
+			List<Vector2> remainingOrder = new List<Vector2>();
+			int levelSize = 2 * gridLevel + 1;
+			for( int row = 0; row < levelSize; ++row )
+			{
+				for( int col = 0; col < levelSize; ++col )
+				{
+					remainingOrder.Add( new Vector2(row - gridLevel, gridLevel - col) );
+				}
+			}
+			remainingOrder = remainingOrder.Where( o => !priorityOrder.Contains(o / gridLevel) && (Mathf.Abs(o.x) == gridLevel || Mathf.Abs(o.y) == gridLevel) ).ToList();
+			int remainingIndex = indexOnLevel - priorityOrder.Count();
+			if( remainingIndex < remainingOrder.Count )
+			{
+				gridPosition = remainingOrder[remainingIndex];
+			}
+		}
+		return gridPosition;
 	}
 
 	// Should be in some utility static class and made an extension method but lazy for now.
