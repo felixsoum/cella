@@ -15,9 +15,13 @@ public class LevelPatternBeginning : MonoBehaviour
 
 	/* Enemies in first wave will first have a */
 	public void run() {
-		int seconds = 0;
+		int seconds = 1;
 		Invoke ("EnemyWave", 1);
-		Invoke ("EnemyWaveHarder", 10);
+		Invoke ("EnemyWaveHarder", seconds += 10);
+		Invoke ("EnemyWave", seconds += 10);
+		Invoke ("EnemyWave", seconds += 10);
+		Invoke ("EnemyWaveHarder", seconds += 10);
+		Invoke ("EnemyWave", seconds += 10);
 	}
 
 
