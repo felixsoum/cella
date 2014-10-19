@@ -96,8 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e7069f26098d1243997a7a84ae0555f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetTag: Player
   direction: {x: -1, y: 0, z: 0}
-  speed: 160
+  speed: 80
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
