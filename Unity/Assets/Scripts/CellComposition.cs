@@ -10,6 +10,8 @@ public class CellComposition : MonoBehaviour
 
 	// Number of cells to start with.
 	public int startingCellCount;
+
+	public int RemainingCellCount { get { return cells.Count; } }
 	
 	private List<GameObject> cells = new List<GameObject>();
 
@@ -27,8 +29,8 @@ public class CellComposition : MonoBehaviour
 		Add( defaultCellPrefab );
 	}
 
-	// Add a cell to the composition by cloning the specified game object.
-	public void Add( GameObject cell )
+	// Add a cell to the composition by cloning the specified game object; returns instantiated object.
+	public GameObject Add( GameObject cell )
 	{
 		var cellClone = Instantiate( cell ) as GameObject;
 		cellClone.transform.position = Vector3.zero;
@@ -36,6 +38,7 @@ public class CellComposition : MonoBehaviour
 
 		cells.Add( cellClone );
 		RepositionCell( cells.Count - 1 );
+		return cellClone;
 	}
 
 	// Removes and destroys a cell from the composition; returns the destroyed cell game object, null if composition was empty.
@@ -52,10 +55,20 @@ public class CellComposition : MonoBehaviour
 		return cellRemoved;
 	}
 
-	public static void Transfer( CellComposition from, CellComposition to )
+	public static GameObject Transfer( CellComposition from, CellComposition to )
 	{
 		var cell = from.Remove();
-		to.Add( cell );
+		cell = to.Add( cell );
+
+		// Re-enable components
+		List<Behaviour> components = new List<Behaviour>(cell.GetComponents<Behaviour>());
+		components.AddRange( cell.GetComponentsInChildren<Behaviour>() );
+		foreach( var c in components )
+		{
+			c.enabled = true;
+		}
+
+		return cell;
 	}
 
 	private void RepositionStructure()

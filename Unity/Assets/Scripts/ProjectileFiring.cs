@@ -42,6 +42,15 @@ public class ProjectileFiring : MonoBehaviour
 			projComp.speed = velocity.magnitude;
 			projComp.direction = velocity.normalized;
 			projComp.targetTag = projectileTargetTag;
+			projComp.Owner = this.gameObject;
 		}
+	}
+
+	public void PasteAttributes( ProjectileFiring destination )
+	{
+		destination.elapsedFire = this.elapsedFire;
+		destination.velocity = this.velocity;
+		destination.delay = this.delay;
+		destination.projectileTargetTag = this.projectileTargetTag;
 	}
 }
