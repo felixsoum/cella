@@ -13,11 +13,7 @@ public class EnemyProjectile : MonoBehaviour {
 		TP.x -= 0.1f;
 		transform.position = TP;
 
-		Vector2 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
-		if (screenPosition.y > Screen.height || 
-		    screenPosition.y < 0 ||
-			screenPosition.x > Screen.width ||
-		    screenPosition.x < 0)
+		if (Common.isOutOfScreen(transform.position))
 			Destroy(this.gameObject);
 
 	}

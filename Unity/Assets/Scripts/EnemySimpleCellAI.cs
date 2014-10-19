@@ -20,12 +20,19 @@ public class EnemySimpleCellAI : MonoBehaviour {
 		pos += Time.deltaTime;
 		TP.x -= 0.03f;
 		transform.position = TP;
+
 	}
 
 	void TimedShoot() {
 		Rigidbody2D p = Instantiate (projectile, this.transform.position, Quaternion.identity) as Rigidbody2D;
 		Invoke ("TimedShoot", 1);
 	}
+
+	#region On
+	void OnBecameInvisible() {
+		Destroy (this.gameObject);
+	}
+	#endregion
 
 	public Rigidbody2D projectile;
 	protected float pos; 

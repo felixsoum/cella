@@ -9,6 +9,8 @@ public class Projectile {
 		attack = 1.0f;
 	}
 
+
+
 	private float attack;
 	public float Attack { get {return attack; }  set{ attack = value; } }
 }
