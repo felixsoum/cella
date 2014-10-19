@@ -21,6 +21,8 @@ public class EnemySimpleCellAI : MonoBehaviour {
 		TP.x -= 0.03f;
 		transform.position = TP;
 
+		if (Common.isOutOfScreen (transform.position))
+			Destroy (this.gameObject);
 	}
 
 	void TimedShoot() {
