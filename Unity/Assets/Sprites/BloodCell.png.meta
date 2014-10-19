@@ -1,11 +1,9 @@
 fileFormatVersion: 2
-guid: e01801c64239bb64c884bc6d1f7982ba
+guid: 86223162b54080d4f94e1de0a7f062a2
 TextureImporter:
   fileIDToRecycleName:
-    21300000: PlayerCell_0
-    21300002: PlayerCell_1
-    21300004: PlayerCell_2
-    21300006: PlayerCell_3
+    21300000: BloodCell_0
+    21300002: BloodCell_1
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -47,7 +45,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: PlayerCell_0
+    - name: BloodCell_0
       rect:
         serializedVersion: 2
         x: 0
@@ -57,30 +55,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: PlayerCell_1
+    - name: BloodCell_1
       rect:
         serializedVersion: 2
         x: 32
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: PlayerCell_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: PlayerCell_3
-      rect:
-        serializedVersion: 2
-        x: 96
         y: 0
         width: 32
         height: 32
