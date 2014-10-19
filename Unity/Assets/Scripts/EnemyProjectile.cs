@@ -25,7 +25,7 @@ public class EnemyProjectile : MonoBehaviour {
 	}
 	
 
-	void OnCollisionEnter2D(Collision2D collision) {
+	void OnTriggerEnter2D(Collider2D collision) {
 		if (collision.gameObject.tag == "Player") {
 			collision.gameObject.SendMessage("ApplyDamage", stats.Attack, SendMessageOptions.DontRequireReceiver);
 			Destroy (this.gameObject);
