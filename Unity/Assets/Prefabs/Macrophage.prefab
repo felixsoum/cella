@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 100002, guid: 13fe441df3593664496fda2d107b8b3a, type: 2}
   projectileTargetTag: Player
-  velocity: {x: -60, y: 0, z: 0}
+  velocity: {x: -320, y: 0, z: 0}
   delay: 1
 --- !u!212 &21200000
 SpriteRenderer:
