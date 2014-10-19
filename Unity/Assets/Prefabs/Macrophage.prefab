@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cf5628f83ce3cd4480c5b578c0f83a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 100002, guid: ed457f354dde86f46befbb39d4688e65, type: 2}
+  projectilePrefab: {fileID: 100002, guid: 13fe441df3593664496fda2d107b8b3a, type: 2}
   projectileTargetTag: Player
   velocity: {x: -60, y: 0, z: 0}
   delay: 1
