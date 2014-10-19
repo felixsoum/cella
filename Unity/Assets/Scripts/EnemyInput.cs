@@ -31,7 +31,7 @@ public class EnemyInput : MonoBehaviour
 		}
 		MoveUpdate();
 
-		BroadcastMessage( "SetFiring", true );
+		BroadcastMessage( "SetFiring", true, SendMessageOptions.DontRequireReceiver );
 		
 		if (Common.isOutOfScreen(transform.position))
 			Destroy (this.gameObject, 1.0f);

@@ -10,6 +10,6 @@ public class PlayerInput : MonoBehaviour
 	{
 		Vector2 axisInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 		rigidbody2D.velocity = axisInput * moveSpeed * Time.deltaTime;
-		BroadcastMessage( "SetFiring", Input.GetButton("Fire1") );
+		BroadcastMessage( "SetFiring", Input.GetButton("Fire1"), SendMessageOptions.DontRequireReceiver  );
 	}
 }
