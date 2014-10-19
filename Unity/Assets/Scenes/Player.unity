@@ -298,7 +298,7 @@ Transform:
   m_PrefabInternal: {fileID: 1129475205}
   m_GameObject: {fileID: 672913131}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.65651369, y: 1.14410257, z: 0}
+  m_LocalPosition: {x: 4.39759922, y: .768063188, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 44602799}
@@ -326,7 +326,7 @@ Animator:
   m_GameObject: {fileID: 672913131}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1229068d3e1785f46bd000c6c4bbf6b4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -357,11 +357,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 6e0d8bd0ee77d15479c83cedf875fcaa, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 5.65651369
+      value: 4.39759922
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6e0d8bd0ee77d15479c83cedf875fcaa, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.14410257
+      value: .768063188
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6e0d8bd0ee77d15479c83cedf875fcaa, type: 2}
       propertyPath: m_LocalPosition.z
@@ -407,6 +407,10 @@ Prefab:
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 6e0d8bd0ee77d15479c83cedf875fcaa, type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1229068d3e1785f46bd000c6c4bbf6b4, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e0d8bd0ee77d15479c83cedf875fcaa, type: 2}
   m_RootGameObject: {fileID: 672913131}
