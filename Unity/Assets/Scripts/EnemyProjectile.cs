@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// todo rename because its used for both enemy and player
 public class EnemyProjectile : MonoBehaviour {
 
+	public string targetTag = "Player";
 	public Vector3 direction = Vector3.left;
 	public float speed = 160.0f;
 
@@ -26,7 +28,7 @@ public class EnemyProjectile : MonoBehaviour {
 	
 
 	void OnTriggerEnter2D(Collider2D collision) {
-		if (collision.gameObject.tag == "Player") {
+		if (collision.gameObject.tag == targetTag) {
 			collision.gameObject.SendMessage("ApplyDamage", stats.Attack, SendMessageOptions.DontRequireReceiver);
 			Destroy (this.gameObject);
 		}

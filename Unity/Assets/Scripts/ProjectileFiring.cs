@@ -5,6 +5,7 @@ public class ProjectileFiring : MonoBehaviour
 {
 	[Tooltip("Specify the prefab used to instantiate each projectile")]
 	public GameObject projectilePrefab;
+	public string projectileTargetTag;
 
 	[Tooltip("Specify the projectile movement velocity in unity units per second")]
 	public Vector3 velocity = new Vector3(160.0f, 0.0f, 0.0f);
@@ -40,6 +41,7 @@ public class ProjectileFiring : MonoBehaviour
 		{
 			projComp.speed = velocity.magnitude;
 			projComp.direction = velocity.normalized;
+			projComp.targetTag = projectileTargetTag;
 		}
 	}
 }
