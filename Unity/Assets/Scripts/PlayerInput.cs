@@ -12,4 +12,10 @@ public class PlayerInput : MonoBehaviour
 		rigidbody2D.velocity = axisInput * moveSpeed * Time.deltaTime;
 		BroadcastMessage( "SetFiring", Input.GetButton("Fire1"), SendMessageOptions.DontRequireReceiver  );
 	}
+
+	void OnDisable()
+	{
+		// ghetto game restart
+		Application.LoadLevel( Application.loadedLevel );
+	}
 }
