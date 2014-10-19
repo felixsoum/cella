@@ -2,10 +2,9 @@
 using System.Collections;
 
 public class EnemyProjectile : MonoBehaviour {
-
+	
 	// Use this for initialization
 	void Start () {
-
 	}
 	
 	// Update is called once per frame
@@ -22,6 +21,8 @@ public class EnemyProjectile : MonoBehaviour {
 		}
 		Destroy (this.gameObject);
 	}
+
+
 
 	/* For power stats etc */
 	private Projectile stats = new Projectile();

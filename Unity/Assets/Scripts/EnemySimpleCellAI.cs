@@ -7,7 +7,8 @@ using System.Collections;
 public class EnemySimpleCellAI : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
+	void Start () {		
+		Invoke ("TimedShoot", 1);
 		var TP = transform.position;
 		pos = Random.Range (0.0f, 8.0f); 
 		TP.x = pos - 4.0f;
@@ -20,6 +21,8 @@ public class EnemySimpleCellAI : MonoBehaviour {
 		TP.x -= 0.03f;
 		transform.position = TP;
 	}
+	void TimedShoot() {
 
+	}
 	protected float pos; 
 }
